@@ -78,6 +78,9 @@ build/
 *.log
 *.scc
 
+.idea
+node_modules
+
 # Visual C++ cache files
 ipch/
 *.aps
