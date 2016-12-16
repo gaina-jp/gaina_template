@@ -55,6 +55,12 @@ module.exports = {
     stylus : src + "/top/styl/**/*"
   },
 
+ /*
+  * _vol1は別ディレクトリ用サンプル
+  * ディレクトリごとに分けたい場合はこんな感じ
+  * まったくスマートじゃないけどね！
+  */
+
   webpack_vol1 :{
     //entry : src + "/coffee/app.coffee",
     entry : {
