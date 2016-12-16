@@ -26,7 +26,7 @@ $ ->
 
     _$loadInner
       .stop()
-      .delay(2000)
+      .delay(1000)
       .animate({opacity:0},500)
     _$load
       .stop()
