@@ -1,6 +1,11 @@
-gaina_template
-==============
+# gaina_template
 
-私のテンプレートだ
+## 私のテンプレートだ
+2016.12.20更新だ
 
-2016.12.16更新だ
+- Gulp
+- Webpack
+- Stylus
+- CoffeeScript
+
+です。
