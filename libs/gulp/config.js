@@ -1,19 +1,32 @@
 var dest = "../html";// 出力先
 var src = "./src";// 元データ
 
+var top_src = src + "/top";
+var vol1_src = src + "/vol1";
+
+var vol1_dir = dest + "/vol1";
+
 module.exports = {
-  dest : dest,
+  dest : {
+    top : dest,
+    vol1 : vol1_dir
+  },
+
+  src : {
+    top : top_src,
+    vol1 : vol1_src
+  },
 
   js:{
-    src : src + "/js/**",
-    dest : dest + "/js",
+    // 使ってない -> src : src + "/js/**",
+    // 使ってない -> dest : dest + "/js",
     uglify : true
   },
 
   webpack :{
     //entry : src + "/coffee/app.coffee",
     entry : {
-      top :src + "/top/coffee/top.coffee"
+      top :top_src + "/coffee/top.coffee"
     },
     output : {
       filename : "[name].js"
@@ -31,6 +44,7 @@ module.exports = {
     }
   },
 
+  // copyは使ってないけど、一応ある
   copy : {
     src : [
       src + "/www/index.html"
@@ -40,7 +54,7 @@ module.exports = {
 
   stylus :{
     src : [
-      src + "/top/styl/**/!(_)*"
+      top_src + "/styl/**/!(_)*"
     ],
     dest : dest + '/css/',
     output : "top.css",
@@ -51,8 +65,8 @@ module.exports = {
   },
 
   watch : {
-    webpack : src + "/top/coffee/**/**.coffee",
-    stylus : src + "/top/styl/**/*"
+    webpack : top_src + "/coffee/**/**.coffee",
+    stylus : top_src + "/styl/**/*"
   },
 
  /*
@@ -64,7 +78,7 @@ module.exports = {
   webpack_vol1 :{
     //entry : src + "/coffee/app.coffee",
     entry : {
-      vol1 :src + "/vol1/coffee/vol1.coffee"
+      vol1 :vol1_src + "/coffee/vol1.coffee"
     },
     output : {
       filename : "[name].js"
@@ -91,9 +105,9 @@ module.exports = {
 
   stylus_vol1 :{
     src : [
-      src + "/vol1/styl/**/!(_)*"
+      vol1_src + "/styl/**/!(_)*"
     ],
-    dest : dest + '/vol1/css/',
+    dest : vol1_dir + '/css/',
     output : "vol1.css",
     autoprefixer : {
       browsers : ["last 3 versions", "ie 8", "ios 4", "android 2.3"]
@@ -102,7 +116,7 @@ module.exports = {
   },
 
   watch_vol1 : {
-    webpack : src + "/vol1/coffee/**/**.coffee",
-    stylus : src + "/vol1/styl/**/*"
+    webpack : vol1_src + "/coffee/**/**.coffee",
+    stylus : vol1_src + "/styl/**/*"
   }
 };
