@@ -1,63 +1,83 @@
-var dest = "../html";// 出力先
+var dest = "../htdocs";// 出力先
 var src = "./src";// 元データ
-
-var top_src = src + "/top";
-var vol1_src = src + "/vol1";
-
-var vol1_dir = dest + "/vol1";
-
-module.exports = {
+var path = {
   dest : {
-    top : dest,
-    vol1 : vol1_dir
+    common : dest + "/common",
+    top : dest
   },
 
   src : {
-    top : top_src,
-    vol1 : vol1_src
+    module : src + "/__utility",
+    common : src + "/common",
+    top : src + "/top"
+  }
+};
+
+module.exports = {
+  dest : {
+    common : path.dest.common,
+    top : path.dest.top
   },
 
-  js:{
-    // 使ってない -> src : src + "/js/**",
-    // 使ってない -> dest : dest + "/js",
-    uglify : true
+  src : {
+    module : path.src.module,
+    common : path.src.common,
+    top : path.src.top
   },
 
   webpack :{
-    //entry : src + "/coffee/app.coffee",
-    entry : {
-      top :top_src + "/coffee/top.coffee"
+    common : {
+      entry : {
+        common : path.src.common + "/coffee/common.coffee"
+      },
+      output : {
+        filename : "[name].js"
+      },
+      externals: {
+        "jquery": "jQuery"
+      },
+      module:{
+        loaders: [
+          {test: /\.coffee$/, loader: "coffee-loader"}
+        ]
+      },
+      resolve : {
+        extensions : ["", ".js", ".coffee"]
+      }
     },
-    output : {
-      filename : "[name].js"
-    },
-    externals: {
-      "jquery": "jQuery"
-    },
-    module:{
-      loaders: [
-        {test: /\.coffee$/, loader: "coffee-loader"}
-      ]
-    },
-    resolve : {
-      extensions : ["", ".js", ".coffee"]
-    }
-  },
 
-  // copyは使ってないけど、一応ある
-  copy : {
-    src : [
-      src + "/www/index.html"
-    ],
-    dest : dest
+    top : {
+      entry : {
+        top : path.src.top + "/coffee/top.coffee"
+      },
+      output : {
+        filename : "[name].js"
+      },
+      externals: {
+        "jquery": "jQuery"
+      },
+      module:{
+        loaders: [
+          {test: /\.coffee$/, loader: "coffee-loader"}
+        ]
+      },
+      resolve : {
+        extensions : ["", ".js", ".coffee"]
+      }
+    },
+
+    uglify : true
   },
 
   stylus :{
-    src : [
-      top_src + "/styl/**/!(_)*"
-    ],
-    dest : dest + '/css/',
-    output : "top.css",
+    src : {
+      common : [path.src.common + "/styl/**/!(_)*"],
+      top : [path.src.top + "/styl/**/!(_)*"]
+    },
+    output : {
+      common : "common.css",
+      top : "top.css"
+    },
     autoprefixer : {
       browsers : ["last 3 versions", "ie 8", "ios 4", "android 2.3"]
     },
@@ -65,58 +85,17 @@ module.exports = {
   },
 
   watch : {
-    webpack : top_src + "/coffee/**/**.coffee",
-    stylus : top_src + "/styl/**/*"
-  },
-
- /*
-  * _vol1は別ディレクトリ用サンプル
-  * ディレクトリごとに分けたい場合はこんな感じ
-  * まったくスマートじゃないけどね！
-  */
-
-  webpack_vol1 :{
-    //entry : src + "/coffee/app.coffee",
-    entry : {
-      vol1 :vol1_src + "/coffee/vol1.coffee"
+    module : {
+      webpack : path.src.module + "/coffee/**/**.coffee",
+      stylus : path.src.module + "/styl/**/*"
     },
-    output : {
-      filename : "[name].js"
+    common : {
+      webpack : path.src.common + "/coffee/**/**.coffee",
+      stylus : path.src.common + "/styl/**/*"
     },
-    externals: {
-      "jquery": "jQuery"
-    },
-    module:{
-      loaders: [
-        {test: /\.coffee$/, loader: "coffee-loader"}
-      ]
-    },
-    resolve : {
-      extensions : ["", ".js", ".coffee"]
+    top : {
+      webpack : path.src.top + "/coffee/**/**.coffee",
+      stylus : path.src.top + "/styl/**/*"
     }
-  },
-
-  copy_vol1 : {
-    src : [
-      src + "/www/vol1/index.html"
-    ],
-    dest : dest
-  },
-
-  stylus_vol1 :{
-    src : [
-      vol1_src + "/styl/**/!(_)*"
-    ],
-    dest : vol1_dir + '/css/',
-    output : "vol1.css",
-    autoprefixer : {
-      browsers : ["last 3 versions", "ie 8", "ios 4", "android 2.3"]
-    },
-    minify : true
-  },
-
-  watch_vol1 : {
-    webpack : vol1_src + "/coffee/**/**.coffee",
-    stylus : vol1_src + "/styl/**/*"
   }
 };

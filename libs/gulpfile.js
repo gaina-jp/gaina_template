@@ -3,4 +3,6 @@ var gulp = require("gulp"),
 
 requireDir("./gulp/tasks", {recursive : true});
 
-gulp.task('default', ['watch'/*,'watch_vol1'*/]);
+gulp.task('common', ['watch_module','watch_common']);
+gulp.task('top', ['watch_module','watch']);
+gulp.task('default', ['watch_module','watch','watch_common']);

@@ -1,7 +1,7 @@
 window.jQuery = window.$ = require "jQuery"
-#PChangeImage = require "./components/PChangeImage"
-#PUI = require "./components/PUI"
-ImageCheck = require "./components/PImageLoadChecker"
+PChangeImage = require "../../__utility/coffee/components/PChangeImage"
+PUI = require "../../__utility/coffee/components/PUI"
+ImageCheck = require "../../__utility/coffee/components/PImageLoadChecker"
 
 #_ua = new PUI()
 
