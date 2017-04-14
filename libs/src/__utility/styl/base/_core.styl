@@ -1,0 +1,166 @@
+percentage($decimal)
+  ( ceil($decimal * 100) ) %
+html
+  overflow-y scroll
+body
+  font-family 'メイリオ', Meiryo, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', Arial, Helvetica, Verdana, sans-serif
+  overflow hidden
+
+p,div
+  margin 0 0 0 0
+  padding 0 0 0 0
+img
+  max-width 100%
+  height auto
+  vertical-align middle
+a
+  text-decoration none
+#load
+  width 100%
+  height 100%
+  position fixed
+  background #fff
+  z-index 100000000
+#loadinner
+  width 100%
+  height 100%
+  position fixed
+  z-index 100000001
+
+.on
+  display none
+
+
+#wrapper
+  max-width 1000px
+  padding 0 0 0 0
+  margin 0 auto
+  position relative
+
+h1
+  margin 0 0 0 0
+  padding 22.8% 0 0 0
+h2
+  margin 0 0 0 0
+  padding 0 0 0 0
+
+.navi
+  width 316px
+  min-height 723px
+  padding 0 0 0 102px
+  position fixed
+  top 0
+  left 0
+
+  .logo
+    padding 24px 0 34px
+
+  ul
+    padding 0 0 0 0
+    margin 0 0 0 0
+    left -102px
+
+  li
+    display block
+    margin 0 0 20px 0
+.enter-and-see
+  text-align center
+  .btn-enter
+    display inline-block
+    width 22%
+    margin 0 2% 0 0
+  .btn-see
+    display inline-block
+    width 22%
+
+.youtube-vol1
+  width 55.5%
+  margin 0 auto
+
+.what
+  margin 15.9% 0 -.7% 0
+  padding 0 0 0 0
+
+.what-btn
+  width 23%
+  max-width 220px
+  margin 0 auto
+.comment
+  padding 0 0 8% 0
+.tanaka-link
+  width percentage(139/1000)
+  max-width 139px
+  margin 0 0 0 23.2%
+
+.rule
+  padding 0 0 15.2% 0
+
+.rule-btn
+  width 23%
+  max-width 220px
+  margin 0 auto
+.vol1
+  margin 0 0 2% 0
+
+.vol1-txt01
+  width 74%
+  border-bottom 1px solid #999
+  margin 0 auto
+.vol1-txt02
+  width 74%
+  margin 0 auto
+
+.vol1-sponsors
+  width 74%
+  border-top 1px solid #999
+  margin 4% auto 0
+
+.footer
+  width 25%
+  max-width 250px
+  margin 0 auto
+  padding 7% 0 4% 0
+
+@media only screen and (min-width: 1001px)
+  a
+    &:hover
+      .on
+        display inline
+      .off
+        display none
+
+@media only screen and (max-width: 1000px)
+  body
+    background-size 100%
+  #wrapper
+    overflow hidden
+
+
+  p,div,a,img,h1,h2
+    line-height 15px
+
+  .navi
+    width 31.6%
+    min-height auto
+    background-size 100%
+    padding 0 0 0 10px
+    position absolute
+    top 0
+    left 0
+
+    .logo
+      width percentage(110/316)
+      max-width 110px
+      padding percentage(24/316) 0 percentage(34/316)
+
+    li
+      width percentage(132/316)
+      margin 0 0 percentage(20/316) 0
+
+  .tanaka-link
+    a
+      display block
+      line-height 10px
+
+  .footer
+    padding 4% 0

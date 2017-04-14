@@ -1,0 +1,45 @@
+// いわずもがなClearFix
+clearfix()
+  &:after
+    content ""
+    display block
+    clear both
+
+
+/*
+ * percentage
+ * width : percentage (100/1000); -> 10%
+ */
+percentage($decimal)
+  ( (ceil($decimal * 10000)) / 100 ) %
+
+/*
+ * vieww
+ * width : vieww (100/1000); -> 10vw
+ */
+vieww($decimal)
+  ( (ceil($decimal * 10000)) / 100 ) vw
+
+
+/*
+ * l-heigh
+ * font-size / line-height
+ * l-heigh(48/32); -> line-height : 1.5;
+ */
+l-height($decimal)
+  line-height ( (ceil($decimal * 100)) / 100 )
+
+/*
+ * width percentage
+ * w-percentage (100/1000); -> width : 10%;
+ */
+w-percentage($decimal)
+  width ( (ceil($decimal * 10000)) / 100 ) %
+
+/*
+ * font-size vw
+ * font-size / view width
+ * f-vieww (16/640); -> font-size : 2.5vw;
+ */
+f-vieww($decimal)
+  font-size ( (ceil($decimal * 10000)) / 100 ) vw
