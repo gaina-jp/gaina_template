@@ -97,5 +97,12 @@ module.exports = {
       webpack : path.src.top + "/coffee/**/**.coffee",
       stylus : path.src.top + "/styl/**/*"
     }
+  },
+
+  connect : {
+    host : "localhost" /*default "localhost"*/,
+    root : dest,
+    port : 12111  /*default 8080*/,
+    livereload : true
   }
 };

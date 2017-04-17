@@ -16,3 +16,7 @@ gulp.task("watch", ["webpack", "stylus"], function(){
   gulp.watch(config.watch.top.stylus, ['stylus']);
 });
 
+gulp.task("watch_html", ["reload_html"], function(){
+  gulp.watch(config.dest.top + "/**/*.html", ['reload_html']);
+});
+
