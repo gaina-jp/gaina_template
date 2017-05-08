@@ -1,8 +1,8 @@
 window.jQuery = window.$ = require "jQuery"
-PChangeImage = require "../../__utility/js/components/PChangeImage"
+window.PChangeImage = require "../../__utility/js/components/PChangeImage"
 PUI = require "../../__utility/js/components/PUI"
-ImageCheck = require "../../__utility/js/components/PImageLoadChecker"
-_ua = new PUI()
+window.PImageCheck = require "../../__utility/js/components/PImageLoadChecker"
+window.__ua = new PUI()
 
 $ ->
   $window = $(window)
@@ -52,7 +52,7 @@ $ ->
   $window.on("resize", resizeFunc)
   resizeFunc()###
 
-  _ic = new ImageCheck(_init)
+  _ic = new PImageCheck(_init)
 
   return
 
