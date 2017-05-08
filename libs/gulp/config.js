@@ -1,3 +1,4 @@
+var __path = require("path");
 var dest = "../htdocs";// 出力先
 var src = "./src";// 元データ
 var path = {
@@ -9,7 +10,7 @@ var path = {
   src : {
     module : src + "/__utility",
     common : src + "/common",
-    top : src + "/top"
+    top : src
   }
 };
 
@@ -26,53 +27,55 @@ module.exports = {
   },
 
   webpack :{
-    common : {
+    _ : { /* Webpack、multiファイル吐き出し、watchでcache、1ファイルでどうにかしたかったけどできてない残骸Object */
+      watch: true,
+      cache : true,
       entry : {
-        common : path.src.common + "/coffee/common.coffee"
+        "common/js/common" : path.src.common + "/js/common.coffee",
+        "js/top" : path.src.top + "/js/top.coffee"
       },
       output : {
-        filename : "[name].js"
+        filename : "[name].js",
+        path: __path.join(__dirname, "../../htdocs")
       },
-      externals: {
-        "jquery": "jQuery"
-      },
-      module:{
-        loaders: [
-          {test: /\.coffee$/, loader: "coffee-loader"}
-        ]
-      },
-      resolve : {
-        extensions : ["", ".js", ".coffee"]
+      externals: {"jquery": "jQuery"},
+      module:{loaders: [{test: /\.coffee$/, loader: "coffee-loader"}]},
+      resolve : {extensions : ["", ".js", ".coffee"]}
+    },
+
+    common : {
+      entry : {
+        common : path.src.common + "/js/common.coffee"
       }
     },
 
     top : {
       entry : {
-        top : path.src.top + "/coffee/top.coffee"
-      },
-      output : {
-        filename : "[name].js"
-      },
-      externals: {
-        "jquery": "jQuery"
-      },
-      module:{
-        loaders: [
-          {test: /\.coffee$/, loader: "coffee-loader"}
-        ]
-      },
-      resolve : {
-        extensions : ["", ".js", ".coffee"]
+        top : path.src.top + "/js/top.coffee"
       }
     },
 
+    output : {
+      filename : "[name].js"
+    },
+    externals: {
+      "jquery": "jQuery"
+    },
+    module:{
+      loaders: [
+        {test: /\.coffee$/, loader: "coffee-loader"}
+      ]
+    },
+    resolve : {
+      extensions : ["", ".js", ".coffee"]
+    },
     uglify : true
   },
 
   stylus :{
     src : {
-      common : [path.src.common + "/styl/**/!(_)*"],
-      top : [path.src.top + "/styl/**/!(_)*"]
+      common : [path.src.common + "/css/**/!(_)*"],
+      top : [path.src.top + "/css/**/!(_)*"]
     },
     output : {
       common : "common.css",
@@ -86,16 +89,16 @@ module.exports = {
 
   watch : {
     module : {
-      webpack : path.src.module + "/coffee/**/**.coffee",
-      stylus : path.src.module + "/styl/**/*"
+      webpack : path.src.module + "/js/**/*",
+      stylus : path.src.module + "/css/**/*"
     },
     common : {
-      webpack : path.src.common + "/coffee/**/**.coffee",
-      stylus : path.src.common + "/styl/**/*"
+      webpack : path.src.common + "/js/**/*",
+      stylus : path.src.common + "/css/**/*"
     },
     top : {
-      webpack : path.src.top + "/coffee/**/**.coffee",
-      stylus : path.src.top + "/styl/**/*"
+      webpack : path.src.top + "/js/**/*",
+      stylus : path.src.top + "/css/**/*"
     }
   },
 

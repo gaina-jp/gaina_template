@@ -25,5 +25,4 @@ class PUI
     androidPhone: __ua__.indexOf('android') > -1 and __ua__.indexOf('mobile') > -1
     android2_3: __ua__.indexOf('android') > -1 and __ua__.indexOf('android 2.3') > -1
     microsoft : __ua__.indexOf('microsoft') != -1
-
 module.exports = PUI

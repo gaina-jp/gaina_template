@@ -2,7 +2,6 @@ class PImageLoadChecker
 
   constructor: (init)->
     _doc = window.document
-    console.log("PImageLoadChecker")
 
     _imgCheck = (callback)->
       _imgLen = _doc.images.length

@@ -1,15 +1,15 @@
 window.jQuery = window.$ = require "jQuery"
-PChangeImage = require "../../__utility/coffee/components/PChangeImage"
-PUI = require "../../__utility/coffee/components/PUI"
-ImageCheck = require "../../__utility/coffee/components/PImageLoadChecker"
-
-#_ua = new PUI()
+PChangeImage = require "../../__utility/js/components/PChangeImage"
+PUI = require "../../__utility/js/components/PUI"
+ImageCheck = require "../../__utility/js/components/PImageLoadChecker"
+_ua = new PUI()
 
 $ ->
   $window = $(window)
   $html = $("html")
   $body = $("body")
 
+  console.log("common.js");
 
   $body.css({
     height : $window.height()
@@ -19,21 +19,20 @@ $ ->
   if $window.height() > $body.height()
     $html.css({"overflow-y":""})
 
-
   _init = ()->
     _$load = $("#load")
     _$loadInner = $("#loadinner")
 
     _$loadInner
       .stop()
-      .delay(1000)
-      .animate({opacity:0},500)
+      .delay(300)
+      .animate({opacity:0},300)
     _$load
       .stop()
-      .delay(2500)
+      .delay(300)
       .animate(
         {top: $window.height()},
-        300,
+        200,
         ()->
           $html.css({"overflow-y":""})
           $body.css({
