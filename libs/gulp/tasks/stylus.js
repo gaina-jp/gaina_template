@@ -8,7 +8,6 @@ var gulp = require("gulp"),
     minify = require("gulp-minify-css"),
     config = require("../config");
 
-
 gulp.task("stylus",function(){
   return gulp.src([config.src.top + "/**/css/**/!(_)*", "!" + config.src.top + "/__utility/css/**/*"])
       .pipe(cached("stylus"))
@@ -19,20 +18,11 @@ gulp.task("stylus",function(){
       .pipe(gulp.dest(config.dest.top + "/"));
 });
 
-gulp.task("stylus_top",function(){
-  return gulp.src(config.stylus.src.top)
+gulp.task("stylus_all",function(){
+  return gulp.src([config.src.top + "/**/css/**/!(_)*", "!" + config.src.top + "/__utility/css/**/*"])
       .pipe(plumber())
       .pipe(stylus())
       .pipe(autoprefixer(config.stylus.autoprefixer))
       .pipe(gulpif(config.stylus.minify, minify()))
-      .pipe(gulp.dest(config.dest.top + "/css"));
-});
-
-gulp.task("stylus_common",function(){
-  return gulp.src(config.stylus.src.common)
-      .pipe(plumber())
-      .pipe(stylus())
-      .pipe(autoprefixer(config.stylus.autoprefixer))
-      .pipe(gulpif(config.stylus.minify, minify()))
-      .pipe(gulp.dest(config.dest.common + "/css"));
+      .pipe(gulp.dest(config.dest.top + "/"));
 });

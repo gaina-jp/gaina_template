@@ -3,7 +3,7 @@ var gulp = require("gulp"),
 
 gulp.task("watch_module", function(){
   gulp.watch(config.watch.module.webpack, ['webpack_top', 'webpack_common']);
-  gulp.watch(config.watch.module.stylus, ['stylus_top','stylus_common']);
+  gulp.watch(config.watch.module.stylus, ['stylus_all']);
 });
 
 gulp.task("watch_stylus", function(){
