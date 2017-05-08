@@ -1,6 +1,8 @@
 {
   "name": "GAINATEMPLATE",
   "version": "1.0.1",
+  "description": "GAINA",
+  "main": "index.js",
   "scripts": {
     "test": "echo Hello world!!"
   },
