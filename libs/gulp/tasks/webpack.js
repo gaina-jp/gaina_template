@@ -15,7 +15,7 @@ gulp.task("webpack_top",function(){
         module : config.webpack.module,
         resolve : config.webpack.resolve
       }))
-      .pipe(gulpif(config.webpack.uglify, uglify()))
+      .pipe(gulpif(config.webpack.uglify, uglify({preserveComments: 'some'})))
       .pipe(gulp.dest(config.dest.top + "/js"));
 });
 
@@ -29,6 +29,6 @@ gulp.task("webpack_common",function(){
         module : config.webpack.module,
         resolve : config.webpack.resolve
       }))
-      .pipe(gulpif(config.webpack.uglify, uglify()))
+      .pipe(gulpif(config.webpack.uglify, uglify({preserveComments: 'some'})))
       .pipe(gulp.dest(config.dest.common + "/js"));
 });

@@ -79,14 +79,11 @@ module.exports = {
       top : [path.src.top + "/css/**/!(_)*"],
       exception : "!" + path.src.top + "/__utility/css/**/*"
     },
-    output : {
-      common : "common.css",
-      top : "top.css"
-    },
     autoprefixer : {
-      browsers : ["last 3 versions", "ie 8", "ios 4", "android 2.3"]
+      browsers : ["last 2 versions", "ie 10", "ios 9", "android 4.0"]
     },
-    minify : true
+    minify : true,
+    sourcemap : false
   },
 
   watch : {
