@@ -9,7 +9,7 @@ var gulp = require("gulp"),
     config = require("../config");
 
 gulp.task("stylus",function(){
-  return gulp.src([config.src.top + "/**/css/**/!(_)*", "!" + config.src.top + "/__utility/css/**/*"])
+  return gulp.src([config.stylus.src.all, config.stylus.src.exception])
       .pipe(cached("stylus"))
       .pipe(plumber())
       .pipe(stylus())
@@ -19,7 +19,7 @@ gulp.task("stylus",function(){
 });
 
 gulp.task("stylus_all",function(){
-  return gulp.src([config.src.top + "/**/css/**/!(_)*", "!" + config.src.top + "/__utility/css/**/*"])
+  return gulp.src([config.stylus.src.all, config.stylus.src.exception])
       .pipe(plumber())
       .pipe(stylus())
       .pipe(autoprefixer(config.stylus.autoprefixer))

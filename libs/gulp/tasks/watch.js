@@ -7,7 +7,7 @@ gulp.task("watch_module", function(){
 });
 
 gulp.task("watch_stylus", function(){
-  gulp.watch(config.src.top + "/**/css/**/!(_)*", ['stylus']);
+  gulp.watch(config.stylus.src.all , ['stylus']);
 });
 
 gulp.task("watch_common", function(){
