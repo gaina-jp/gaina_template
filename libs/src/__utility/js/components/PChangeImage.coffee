@@ -1,5 +1,15 @@
+###
+  画像をPCスマホ用で出し分けるやつ
+  _change = new PChangeImage($(".change"), $(".change-bg"))
+  してリサイズイベントで
+  _change.changeforSP()
+  _change.changeforPC()
+  みたいな感じでやる
+  img/ にはスマホ用画像
+  img/p にはPC用画像
+  ファイル名は同じにしておくことー
+###
 class PChangeImage
-
   constructor: (targets, targetsbg)->
     this.$targets = targets
     this.$targetsbg = targetsbg

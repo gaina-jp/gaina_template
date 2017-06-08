@@ -6,29 +6,17 @@ var gulp = require("gulp"),
     config = require("../config");
 
 gulp.task("webpack_top",function(){
-  return gulp.src(config.webpack.top.entry.top)
+  return gulp.src(config.src.top + config.src.js)
       .pipe(plumber())
-      .pipe(webpack({
-        entry : config.webpack.top.entry,
-        output : config.webpack.output,
-        externals: config.webpack.externals,
-        module : config.webpack.module,
-        resolve : config.webpack.resolve
-      }))
-      .pipe(gulpif(config.webpack.uglify, uglify({preserveComments: 'some'})))
-      .pipe(gulp.dest(config.dest.top + "/js"));
+      .pipe(webpack(config.webpack))
+      .pipe(gulpif(config.uglify, uglify({preserveComments: 'some'})))
+      .pipe(gulp.dest(config.dest.top + config.dest.js));
 });
 
 gulp.task("webpack_common",function(){
-  return gulp.src(config.webpack.common.entry.common)
+  return gulp.src(config.src.common + config.src.js)
       .pipe(plumber())
-      .pipe(webpack({
-        entry : config.webpack.common.entry,
-        output : config.webpack.output,
-        externals: config.webpack.externals,
-        module : config.webpack.module,
-        resolve : config.webpack.resolve
-      }))
+      .pipe(webpack(config.webpack))
       .pipe(gulpif(config.webpack.uglify, uglify({preserveComments: 'some'})))
-      .pipe(gulp.dest(config.dest.common + "/js"));
+      .pipe(gulp.dest(config.dest.common + config.dest.js));
 });

@@ -1,8 +1,10 @@
+###
+  画像が全部ロードされたのかチェックするやつ
+  でもトラッキングするようなimgがあったら動かん、、、要検証やで
+###
 class PImageLoadChecker
-
   constructor: (init)->
     _doc = window.document
-
     _imgCheck = (callback)->
       _imgLen = _doc.images.length
       _done = 0
@@ -13,7 +15,6 @@ class PImageLoadChecker
           _doc.images[j].onload = ()->
             _done++
             return
-
       _imgLodingChecker = setInterval(
         ()->
           if _done is _imgLen
@@ -23,7 +24,6 @@ class PImageLoadChecker
       ,33
       )
       return
-
     _imgCheck(init)
 
 module.exports = PImageLoadChecker

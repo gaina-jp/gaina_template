@@ -1,3 +1,3 @@
 $ ->
-  console.log("top.js")
+  console.log("script.js")
   return
