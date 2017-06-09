@@ -1,0 +1,54 @@
+@import '../modules/_module'
+.navi-btn
+  color #fff
+  background #333
+  padding 10px
+  position fixed
+  top 0
+  left 0
+  cursor pointer
+  transition all 300ms 100ms $easeinout
+  z-index 1001
+
+nav
+  width 0
+  height 0
+  position fixed
+  top 0
+  bottom 0
+  right 0
+  left 0
+.nav-inner
+  width 200px
+  background rgba(100,100,100,.9)
+  padding 10px
+  box-sizing border-box
+  transition all 300ms 100ms $easeinout
+  position relative
+  right 200px
+  z-index 1
+
+
+.hide-window
+  overflow hidden
+.navi-open
+  display block
+  width 100%
+  height 100%
+  background rgba(100,100,100,.7)
+  overflow-y scroll
+  overflow-x hidden
+  z-index 1000
+  .navi-bg
+    position absolute
+    top 0
+    bottom 0
+    right 0
+    left 0
+    z-index 0
+.navi-inner-open
+  position relative
+  right 0
+  background rgba(0,100,0,.9)
+.navi-btn-open
+  left 200px
