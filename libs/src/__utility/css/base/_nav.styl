@@ -1,37 +1,59 @@
 @import '../modules/_module'
-.navi-btn
-  color #fff
-  background #333
-  padding 10px
-  position fixed
-  top 0
-  left 0
-  cursor pointer
-  transition all 300ms 100ms $easeinout
-  z-index 1001
 
-nav
+.hide-window
+  overflow hidden
+
+/**
+ * 左から右に出るパターンの方
+ */
+.navi-left-to-right
   width 0
-  height 0
+  height 100%
   position fixed
   top 0
   bottom 0
   right 0
   left 0
-.nav-inner
-  width 200px
-  background rgba(100,100,100,.9)
-  padding 10px
-  box-sizing border-box
-  transition all 300ms 100ms $easeinout
-  position relative
-  right 200px
-  z-index 1
-
-
-.hide-window
-  overflow hidden
-.navi-open
+  .nav-inner
+    width 200px
+    min-height 100%
+    background rgba(100,100,100,.9)
+    padding 10px
+    box-sizing border-box
+    transition all 100ms 100ms $easeinout
+    position relative
+    right 200px
+    z-index 1
+  .navi-inner-open
+    position relative
+    right 0
+    background rgba(0,100,0,.9)
+  &~
+    .navi-btn
+      color #fff
+      background #333
+      border-right 1px solid #fff
+      border-bottom 1px solid #fff
+      padding 10px
+      position fixed
+      top 0
+      left 0
+      cursor pointer
+      transition all 100ms 100ms $easeinout
+      z-index 1001
+      &:hover
+        color #333
+        background #fff
+        border-right 1px solid #333
+        border-bottom 1px solid #333
+    .navi-btn-open
+      animation 200ms $easeinout 100ms 1 normal forwards appearLeftToRight
+      color #333
+      background #fff
+      border-right 1px solid #333
+      border-bottom 1px solid #333
+      left 200px
+.navi-left-to-right.navi-open
   display block
   width 100%
   height 100%
@@ -46,9 +68,94 @@ nav
     right 0
     left 0
     z-index 0
-.navi-inner-open
-  position relative
+@keyframes appearLeftToRight
+  0%
+    transform scale(1)
+  20%
+    transform scale(0.9)
+  90%
+    transform scale(1.2)
+  100%
+    transform scale(1)
+
+
+/**
+ * 右から左に出るパターンの方
+ */
+.navi-right-to-left
+  width 100%
+  height 100%
+  position fixed
+  top 0
+  bottom 0
   right 0
-  background rgba(0,100,0,.9)
-.navi-btn-open
-  left 200px
+  left 0
+  z-index 0
+  .nav-inner
+    width 200px
+    min-height 100%
+    background rgba(100,100,100,.9)
+    padding 10px
+    box-sizing border-box
+    transition all 100ms 100ms $easeinout
+    position absolute
+    right -200px
+    //transform translateX(100%)
+    z-index 1
+  .navi-inner-open
+    right 0
+    background rgba(0,100,0,.9)
+  &~
+    header,
+    main,
+    footer
+      position relative
+      z-index 1
+    .navi-btn
+      color #fff
+      background #333
+      border-left 1px solid #fff
+      border-bottom 1px solid #fff
+      padding 10px
+      position fixed
+      top 0
+      right 0
+      cursor pointer
+      transition all 100ms 100ms $easeinout
+      z-index 1001
+      &:hover
+        color #333
+        background #fff
+        border-left 1px solid #333
+        border-bottom 1px solid #333
+    .navi-btn-open
+      animation 200ms $easeinout 100ms 1 normal forwards appearRightToLeft
+      color #333
+      background #fff
+      border-left 1px solid #333
+      border-bottom 1px solid #333
+      right 216px
+.navi-right-to-left.navi-open
+  display block
+  width 100%
+  height 100%
+  background rgba(100,100,100,.7)
+  overflow-y scroll
+  overflow-x hidden
+  z-index 1000
+  .navi-bg
+    position absolute
+    top 0
+    bottom 0
+    right 0
+    left 0
+    z-index 0
+@keyframes appearRightToLeft
+  0%
+    transform scale(1)
+  20%
+    transform scale(0.9)
+  90%
+    transform scale(1.2)
+  100%
+    transform scale(1)
