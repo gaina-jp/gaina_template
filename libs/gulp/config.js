@@ -19,7 +19,7 @@ module.exports = {
   },
 
   webpack :{
-    output : {filename : "script.js"},
+    output : {filename : "[name].js"},
     externals: {"jquery": "jQuery"},
     module:{
       loaders: [
@@ -28,10 +28,15 @@ module.exports = {
     },
     resolve : {extensions : ["", ".js", ".coffee"]}
   },
-  uglify : true,
+  uglify : {
+    minify : true,
+    options : {preserveComments:"some"}
+  },
 
   stylus :{
     src : {
+      common : src + "/common/css/!(_)*",
+      top : src + "/css/!(_)*",
       all : src + "/**/css/**/!(_)*",
       exception : "!" + src + "/__utility/css/**/*"
     },

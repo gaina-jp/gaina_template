@@ -1,5 +1,5 @@
 !function(e){function t(r){if(n[r])return n[r].exports;var i=n[r]={exports:{},id:r,loaded:!1};return e[r].call(i.exports,i,i.exports,t),i.loaded=!0,i.exports}var n={};t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){var r;window.jQuery=window.$=n(1),window.GChangeImage=n(2),r=n(3),window.GImageCheck=n(4),window.__ua=new r,$(function(){var e,t,n,r;n=$(window),t=$("html"),e=$("body"),console.log("common.js"),e.css({height:n.height(),overflow:"hidden"}),n.height()>e.height()&&t.css({"overflow-y":""}),r=function(){var r,i;r=$("#load"),i=$("#loadinner"),i.stop().delay(300).animate({opacity:0},300),r.stop().delay(300).animate({top:n.height()},200,function(){t.css({"overflow-y":""}),e.css({height:"",overflow:""}),r.remove(),i.remove()})},new GImageCheck(r)})},function(e,t,n){var r,i;/*!
-	* jQuery JavaScript Library v3.2.1
+	 * jQuery JavaScript Library v3.2.1
 	 * https://jquery.com/
 	 *
 	 * Includes Sizzle.js
