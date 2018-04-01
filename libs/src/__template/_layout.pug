@@ -1,0 +1,140 @@
+- var _directoryPath = "/"
+- var _siteName = "サイト名"
+- var _siteUrl = "https://www.gaina-laboratory.com/"
+- var _pageTitle = "TOP PAGE"
+- var _description = "ガイナのアレ"
+- var _keyword = "ガイナ,gaina"
+- var _ogUrl = _siteUrl + _directoryPath
+- var _ogImage = _ogUrl + "images/sns.jpg"
+- var _isFixbar = false
+- var _mainClass = "top"
+doctype html
+block vars
+html(lang="ja")
+  //- HEAD
+  head
+    meta(charset="utf-8")
+    //- Page Information
+    title #{_pageTitle} | #{_siteName}
+    meta(name="description", content=_description)
+    meta(name="keyword", content=_keyword)
+    meta(name="viewport", content="width=device-width,user-scalable=no")
+    //- SNS
+    meta(property="og:title", content=_pageTitle + " | "+_siteName)
+    meta(property="og:type", content="website")
+    meta(property="og:description", content=_description)
+    meta(property="og:url", content=_ogUrl)
+    meta(property="og:image", content=_ogImage)
+    meta(property="og:site_name", content=_siteName)
+    meta(property="og:locale", content="ja_JP")
+    meta(property="fb:app_id", content="")
+    //- CSS
+    link(rel="stylesheet", href="/common/css/style.css")
+    block style
+
+  //- BODY
+  body
+    div#svg: include ../common/images/icons.svg
+    //- HEADER
+    header
+      //- NAVIGATION
+      nav(id="navi", class="navigation")
+        div(id="navi_btn", class="btn navi-btn")
+          span.display-pc
+            img(class="open", src="/common/images/menu_open.png", width="100", height="80", alt="メニューを開く")
+            img(class="close", src="/common/images/menu_close.png", width="100", height="80", alt="メニューを閉じる")
+          span.display-sp
+            img(class="open", src="/common/images/menu_open_sp.png", width="132", height="120", alt="メニューを開く")
+            img(class="close", src="/common/images/menu_close_sp.png", width="132", height="120", alt="メニューを閉じる")
+
+        //- NAVIGATIONの中身var
+        -
+          var _navs = [
+          {name: "aaaaa", link: "/aaaaa/"},
+          {name: "bbbbb", link: "/bbbbb/"},
+          {name: "ccccc", link: "/ccccc/"},
+          {name: "ddddd", link: "/ddddd/"},
+          {name: "eeeee", link: "/eeeee/"}
+          ]
+        //- NAVIGATIONの中身varここまで
+
+        div(id="navi_content", class="nav-inner")
+          for __item, __index in _navs
+            div(class="navi navi"+(__index+1))
+              a(href=__item['link'])
+                svg(viewBox="0 0 140 100"): use(xlink:href="#icon"+(__index+1)+"_navi")
+                span #{__item['name']}
+
+        div(id="navi_bg", class="navi-bg")
+
+      div.logo
+        a(href="/")
+          img.display-pc(src="/common/images/logo.png", width="250", height="80", alt="logo")
+          img.display-sp(src="/common/images/logo_sp.png", width="360", height="120", alt="logo")
+
+    //- vars確認用
+    main(class=_mainClass)
+      block _kakunin_
+    //- MAIN
+    main(class=_mainClass)
+      block content
+
+    //- FOOTER
+    footer
+      //- registration and login
+      if _isFixbar
+        #fixed_bar.fixed-bar
+          .registration-btn
+            a(href="/login/mailregist/")
+              span.display-pc
+                img.off(src="/common/images/btn_registration.png", width="332", height="90", alt="新規研究メンバー登録")
+                img.on(src="/common/images/btn_registration_on.png", width="332", height="90", alt="新規研究メンバー登録")
+              span.display-sp
+                img(src="/common/images/btn_registration_sp.png", width="168", height="65", alt="新規研究メンバー登録")
+          p.login すでに研究メンバーの方は
+            br.display-sp
+            |こちらから
+            a(href="/login/") ログイン
+      .footer-sns-box
+        .footer-sns
+          a(href="", class="over", target="_blank")
+            img(src="/common/images/icon_insta.png", width="86", height="86", alt="Instagram")
+        .footer-sns
+          a(href="", class="over", target="_blank")
+            img(src="/common/images/icon_fb.png", width="86", height="86", alt="Facebook")
+        .footer-sns
+          a(href="", class="over", target="_blank")
+            img(src="/common/images/icon_tw.png", width="86", height="86", alt="Twitter")
+        .footer-sns
+          a(href="", class="over", target="_blank")
+            img(src="/common/images/icon_line.png", width="86", height="86", alt="LINE")
+      .footer-bnr-box
+        .footer-bnr-inner
+          .footer-bnr
+            a(href="", class="over", target="_blank")
+              img(class="display-pc", src="/common/images/bnr1_footer.png", width="240", height="90", alt="")
+              img(class="display-sp", src="/common/images/bnr1_footer_sp.png", width="330", height="100", alt="")
+          .footer-bnr
+            a(href="", class="over", target="_blank")
+              img(class="display-pc", src="/common/images/bnr2_footer.png", width="240", height="90", alt="")
+              img(class="display-sp", src="/common/images/bnr2_footer_sp.png", width="330", height="100", alt="")
+          .footer-bnr
+            a(href="", class="over")
+              img(class="display-pc", src="/common/images/bnr3_footer.png", width="240", height="90", alt="")
+              img(class="display-sp", src="/common/images/bnr3_footer_sp.png", width="330", height="100", alt="")
+          .footer-bnr
+            a(href="", class="over", target="_blank")
+              img(class="display-pc", src="/common/images/bnr4_footer.png", width="240", height="90", alt="")
+              img(class="display-sp", src="/common/images/bnr4_footer_sp.png", width="330", height="100", alt="")
+      ul.footer-navi-box
+        li.footer-navi
+          a(href="") カタログ請求
+        li.footer-navi
+          a(href="") お問い合わせ・推奨環境
+        li.footer-navi
+          a(href="") 利用規約
+        li.footer-navi
+          a(href="") お客様情報保護方針
+    //- Script
+    script(src="/common/js/script.js")
+    block script

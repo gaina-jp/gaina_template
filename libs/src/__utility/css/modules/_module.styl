@@ -1,3 +1,6 @@
+$pw = 1024
+$sw = 750
+
 // いわずもがなClearFix
 clearfix()
   &:after
@@ -72,3 +75,9 @@ H_gradient(color1,color2)
   background-image: -webkit-linear-gradient(left, color1 0%, color2 100%)
   background-image:    -moz-linear-gradient(left, color1 0%, color2 100%)
   background-image:         linear-gradient(to right, color1 0%,color2 100%)
+
+/**
+  RANDOM
+ */
+random(min,max)
+  return floor(math(0, 'random')*(max - min + 1) + min)

@@ -1,0 +1,34 @@
+extends __template/_layout
+block vars
+  - var _directoryPath = "/"
+  - var _pageTitle = "TOP PAGE"
+  - var _description = "description！"
+  - var _keyword = "keyword,gaina template"
+  - var _ogUrl = _siteUrl + _directoryPath
+  - var _ogImage = _ogUrl + "images/sns.jpg"
+  - var _isFixbar = true
+  - var _mainClass = "index"
+
+block style
+  link(rel="stylesheet", href=_directoryPath+"css/style.css")
+
+block _kakunin_
+  div -----------------------------------------
+  div _directoryPath: ----> 「#{_directoryPath}」
+  div _pageTitle: --------> 「#{_pageTitle}」
+  div _description: ------> 「#{_description}」
+  div _keyword: ----------> 「#{_keyword}」
+  div _ogUrl: ------------> 「#{_ogUrl}」
+  div _ogImage: ----------> 「#{_ogImage}」
+  div _isFixbar: ---------> 「#{_isFixbar}」
+  div _mainClass: --------> 「#{_mainClass}」
+  div -----------------------------------------
+  div 確認したらごっそり消す
+  div -----------------------------------------
+
+
+block content
+  h1 ここにメインつくっていく
+
+block script
+  script(src=_directoryPath+"js/script.js")

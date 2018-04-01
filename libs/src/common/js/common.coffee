@@ -1,3 +1,7 @@
+###
+  ES6にしていく
+###
+
 window.jQuery = window.$ = require "jQuery"
 window.GChangeImage = require "../../__utility/js/components/GChangeImage"
 GUA = require "../../__utility/js/components/GUA"

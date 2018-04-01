@@ -1,57 +1,124 @@
-var __path = require("path");
-var dest = "../htdocs";// 出力先
-var src = "./src";// 元データ
+const path = require("path")
+    ,dest = "../htdocs"
+    ,src = "./src";
+
+// npm plugin まとめる
+const $ = {
+  gulp : require("gulp"),
+  pug : require("gulp-pug"),
+  pugInherit : require('gulp-pug-inheritance'),
+  filter : require('gulp-filter'),
+  stylus : require("gulp-stylus"),
+  autoprefixer : require("gulp-autoprefixer"),
+  sourcemaps : require("gulp-sourcemaps"),
+  cleanCSS : require("gulp-clean-css"),
+  nib : require('nib'),
+  webpack : require("gulp-webpack"),
+  uglify : require("gulp-uglify"),
+  babel : require("gulp-babel"),
+  gulpif : require("gulp-if"),
+  changed : require("gulp-changed"),
+  cached : require("gulp-cached"),
+  plumber : require("gulp-plumber"),
+  notify : require('gulp-notify'),
+  server : require("gulp-webserver"),
+  bs : require("browser-sync").create(),
+  imagemin : require('gulp-imagemin'),
+  imageminJpg : require('imagemin-jpeg-recompress'),
+  imageminPng : require('imagemin-pngquant'),
+  imageminGif : require('imagemin-gifsicle')
+};
+
 
 module.exports = {
+  $ : $,
+
   dest : {
     js : "/js",
     css : "/css",
     common : dest + "/common",
-    top : dest
+    top : dest,
+    bookcafe : dest + "/bookcafe",
+    column : dest + "/column",
+    enquete : dest + "/enquete",
+    facility : dest + "/facility",
+    labwall : dest + "/labwall",
+    login : dest + "/login",
+    midokoro : dest + "/midokoro",
+    news : dest + "/news",
+    staffblog : dest + "/staffblog"
   },
 
   src : {
-    js : "/js/**/*",
-    css : "/css/**/*",
+    js : "/js/*.js",
+    css : "/css/*.styl",
+    pug : "/*.pug",
     module : src + "/__utility",
     common : src + "/common",
-    top : src
+    top : src,
+    bookcafe : src + "/bookcafe",
+    column : src + "/column",
+    enquete : src + "/enquete",
+    facility : src + "/facility",
+    labwall : src + "/labwall",
+    login : src + "/login",
+    midokoro : src + "/midokoro",
+    news : src + "/news",
+    staffblog : src + "/staffblog"
   },
 
+  //see -> https://qiita.com/syunchanp/items/dace515632a9baff344b
+  //see -> https://github.com/babel/babel-loader/issues/505
   webpack :{
-    output : {filename : "[name].js"},
-    externals: {"jquery": "jQuery"},
+    context : path.resolve(__dirname, '../'),
+    output : {
+      filename : "[name].js"
+    },
+    externals: {
+      "jquery": "jQuery"
+    },
     module:{
       loaders: [
-        {test: /\.coffee$/, loader: "coffee-loader"}
+        {
+          test: /\.js/,
+          exclude: /node_modules/,
+          loader: "babel-loader"
+        }
       ]
     },
-    resolve : {extensions : ["", ".js", ".coffee"]}
+    resolve : {
+      root : path.resolve(__dirname, '../'),
+      extensions : ["", ".js"]
+    }
   },
+
   uglify : {
-    minify : true,
+    minify : false,
     options : {preserveComments:"some"}
   },
 
   stylus :{
     src : {
       common : src + "/common/css/!(_)*",
-      top : src + "/css/!(_)*",
       all : src + "/**/css/**/!(_)*",
       exception : "!" + src + "/__utility/css/**/*"
     },
     output : "style.css",
     autoprefixer : {
-      browsers : ["last 2 versions", "ie 10", "ios 9", "android 4.0"]
+      browsers : ["last 2 versions", "ie 10", "ios 9", "android 5.0"]
     },
-    minify : true,
-    sourcemap : false
+    minify : false,
+    sourcemap : false,
+    opt:{
+      import: ['nib'],
+      use: [$.nib()]
+    }
   },
 
-  connect : {
-    host : "localhost" /*default "localhost"*/,
+  server : {
+    host : "192.168.1.96",
     root : dest,
-    port : 12111  /*default 8080*/,
+    port : "25769",
     livereload : true
   }
 };
