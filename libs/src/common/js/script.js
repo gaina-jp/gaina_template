@@ -5,38 +5,17 @@ jQuery(($)=>{
   let $window = $(window);
   _navigation();
 
-  let $fixedBar = $("#fixed_bar");
-  let $toPagetop =  $("#to_pagetop");
-  if($fixedBar.length !== 0){
-    let _$footer = $("footer");
-    $fixedBar.css({position: "fixed"});
-    let __fixedBarHeight = $fixedBar.outerHeight();
+  let __resizeFunc = ()=>{};
+  let __scrollFunc = ()=>{};
 
-    let __resizeFunc = ()=>{
-      __fixedBarHeight = $fixedBar.outerHeight();
-      _$footer.css({paddingTop: __fixedBarHeight});
-      $toPagetop.css({bottom: $fixedBar.outerHeight() + 20});
-    };
-    let __scrollFunc = ()=>{
-      let __posAmount = $window.scrollTop() + $window.height() - __fixedBarHeight;
-      if(__posAmount > _$footer.offset().top){
-        $fixedBar.css({position: "absolute", top: "0", bottom:"inherit"});
-        $toPagetop.css({bottom: 20});
-      }else{
-        $fixedBar.css({position: "fixed", top: "", bottom:""});
-        $toPagetop.css({bottom: $fixedBar.outerHeight() + 20});
-      }
-    };
+  $window.on("resize", __resizeFunc);
+  $window.on("scroll", __scrollFunc);
+  __resizeFunc();
+  __scrollFunc();
 
-    $window.on("resize", __resizeFunc);
-    $window.on("scroll", __scrollFunc);
+  window.onload = function(){
     __resizeFunc();
-    __scrollFunc();
-
-    window.onload = function(){
-      __resizeFunc();
-    };
-  }
+  };
 
 
   let _scrollToPagetop = (event)=>{
