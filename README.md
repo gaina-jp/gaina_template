@@ -1,13 +1,13 @@
 # gaina_template
 
 ## 私のテンプレートだ
-### 2018.4.1更新だ
-- いろいろやりかたを変更
-- CoffeeScriptやめてES6にしていく
-- pug使っていく
-- nibもいれてみる
+### 2018.12.19更新だ
+- Gulp4対応
+- StylusからSass(Scss)に変更
 ***
 ### これら使ってるよ
-- Gulp
+- Gulp4
 - Webpack
-- Stylus
+- Pug
+- ES6
+- Scss
