@@ -1,90 +1,61 @@
 import $ from 'jQuery';
 import _navigation from './_Navigation';
 global.$ = global.jQuery = $;
-
 jQuery(($)=>{
   let $window = $(window);
   _navigation();
 
-  let _gall = $("#article_gallery_photos");
-  if(_gall.length !== 0){
-    let _gallery = _gall.slick({
-      vertical : true,
-      dots : false,
-      swipe :false,
-      arrows : false
-    });
+  let $fixedBar = $("#fixed_bar");
+  let $toPagetop =  $("#to_pagetop");
+  if($fixedBar.length !== 0){
+    let _$footer = $("footer");
+    $fixedBar.css({position: "fixed"});
+    let __fixedBarHeight = $fixedBar.outerHeight();
 
-    let _desc = $(".article-gallery-desc");
-    let _ismove = false;
-
-    _gallery.on('beforeChange',(event, slick, currentSlide, nextSlide)=>{
-      _ismove = true;
-    });
-    _gallery.on('afterChange',(event, slick, currentSlide, nextSlide)=>{
-      _ismove = false;
-    });
-
-    let _clickFunc = (event)=>{
-      if(_ismove) return false;
-      let num = event.data.num;
-      _gallery.slick("setPosition");
-      _gallery.slick("slickGoTo",num);
-
-      _thumbs.each((i)=>{
-        let __this = $(_thumbs[i]);
-        let __desc = $(_desc[i]);
-        if(i === num){
-          __this.addClass("is-current");
-          __desc.addClass("is-current");
-        }else{
-          __this.removeClass("is-current");
-          __desc.removeClass("is-current");
-        }
-      });
+    let __resizeFunc = ()=>{
+      __fixedBarHeight = $fixedBar.outerHeight();
+      _$footer.css({paddingTop: __fixedBarHeight});
+      $toPagetop.css({bottom: $fixedBar.outerHeight() + 20});
+    };
+    let __scrollFunc = ()=>{
+      let __posAmount = $window.scrollTop() + $window.height() - __fixedBarHeight;
+      if(__posAmount > _$footer.offset().top){
+        $fixedBar.css({position: "absolute", top: "0", bottom:"inherit"});
+        $toPagetop.css({bottom: 20});
+      }else{
+        $fixedBar.css({position: "fixed", top: "", bottom:""});
+        $toPagetop.css({bottom: $fixedBar.outerHeight() + 20});
+      }
     };
 
-    let _thumbs = $(".article-gallery-thumb");
-    _thumbs.each((i)=>{
-      let __this = $(_thumbs[i]);
-      __this.on("click",{num:i},_clickFunc);
-    });
+    $window.on("resize", __resizeFunc);
+    $window.on("scroll", __scrollFunc);
+    __resizeFunc();
+    __scrollFunc();
 
-
-    $window.on("resize",(event)=>{
-      _gallery.slick("setPosition");
-    });
+    window.onload = function(){
+      __resizeFunc();
+    };
   }
 
 
-  let HeightAjuster = (element)=>{
-    let _elm = $(element);
-    let _m = 0;
+  let _scrollToPagetop = (event)=>{
+    $("html, body").stop().animate({scrollTop: 0},400);
+    return false;
+  };
 
-    if($window.width() > 750){
-      _elm.each((i)=>{
-        if($(_elm[i]).height() > _m){
-          _m = $(_elm[i]).height();
-        }
-      });
-      _elm.each((i)=>{
-        if($(_elm[i]).height() !== _m){
-          let _diff = (_m - $(_elm[i]).height()) / 2;
-          $(_elm[i]).css({paddingTop : _diff,paddingBottom : _diff});
-        }
-      });
-    }else{
-      _elm.each((i)=>{
-        $(_elm[i]).css({paddingTop : "",paddingBottom : ""});
-      });
+  $toPagetop.on("click", _scrollToPagetop);
+
+  let _scrollToTarget = (event)=>{
+    let __$target = $(event.currentTarget);
+    let __targetHash = __$target.attr("href");
+    if(__targetHash === "" || __targetHash.indexOf("#") !== 0){
+      return false;
     }
+    let __targetOffsetTop = $(__targetHash).offset().top - $("#navi").outerHeight();
+    $("html, body").stop().animate({scrollTop: __targetOffsetTop},400);
+    return false;
   };
-
-  let Resizer = ()=>{
-    HeightAjuster(".thanks-contact-txt");
-  };
-
-  $window.on("resize", Resizer);
-  Resizer();
+  $(".btn-anchor").on("click", _scrollToTarget);
 
 });

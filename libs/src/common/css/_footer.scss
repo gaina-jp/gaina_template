@@ -1,0 +1,222 @@
+@import '../../__utility/css/modules/module';
+
+@media only screen and (min-width: 751px) {
+  .fixed-bar {
+    width: 100%;
+    text-align: center;
+    background: #3c3330;
+    padding: 10px 0 8px;
+    bottom: 0;
+  }
+  .registration-btn {
+    display: inline-block;
+    width: 247px;
+    line-height: 1;
+    vertical-align: middle;
+    padding: 5px 0 0 0;
+  }
+  .login-now {
+    color: #fff;
+    font-size: 14px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0 0 30px;
+    a {
+      color: #fff;
+      font-weight: bold;
+      text-decoration: underline;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+  footer {
+    background: #fff;
+    padding: 0 0 30px;
+    position: relative;
+    z-index: 2;
+  }
+  .footer-sns-box {
+    text-align: center;
+    background: #fff;
+    border-top: 1px solid #e5e5e5;
+    padding: 32px 12px;
+  }
+  .footer-sns {
+    display: inline-block;
+    width: 56px;
+    margin: 0 32px;
+  }
+  .footer-bnr-box {
+    background: #fafafa;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    margin: 0 0 46px;
+  }
+  .footer-bnr-inner {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 30px 0;
+    &:after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+  }
+  .footer-bnr {
+    float: left;
+    width: 23.44%;
+    margin: 0 1.96% 0 0;
+    &:last-child {
+      margin: 0 0 0 0;
+    }
+  }
+  .sekisuihouse-logo {
+    text-align: center;
+    margin: 0 0 30px;
+  }
+  .footer-navi-box {
+    text-align: center;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+  }
+  .footer-navi {
+    display: inline-block;
+    &::after {
+      display: inline-block;
+      content: "|";
+      padding: 0 24px;
+    }
+    &:last-child::after {
+      display: none;
+    }
+    a {
+      color: #333;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .to-pagetop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10;
+    img {
+      -webkit-transition: all 0.1s;
+      transition: all 0.1s;
+    }
+    a:hover img {
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+    }
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .fixed-bar {
+    width: 100%;
+    text-align: center;
+    background: #3c3330;
+    padding: 2% 0;
+    bottom: 0;
+  }
+  .registration-btn {
+    display: inline-block;
+    width: 47.34%;
+    vertical-align: middle;
+    padding: 0.94% 0 0 0;
+  }
+  .login-now {
+    color: #fff;
+    font-size: 2.94vw;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0 0 5.34%;
+    a {
+      color: #fff;
+      font-weight: bold;
+      text-decoration: underline;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+  footer {
+    background: #fff;
+    padding: 0 0 30px;
+    position: relative;
+    z-index: 2;
+  }
+  .footer-sns-box {
+    text-align: center;
+    background: #fff;
+    border-top: 1px solid #e5e5e5;
+    padding: 4.27%;
+  }
+  .footer-sns {
+    display: inline-block;
+    width: 7.2%;
+    margin: 0 4.8% 0;
+  }
+  .footer-bnr-box {
+    background: #fafafa;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    margin: 0 0 0 0;
+  }
+  .footer-bnr-inner {
+    margin: 0 0 0 5.34%;
+    padding: 5.6% 0 2.94%;
+    &:after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+  }
+  .footer-bnr {
+    float: left;
+    width: 46.48%;
+    margin: 0 1.41% 2.26% 0;
+    &:last-child {
+      margin: 0 0 0 0;
+    }
+  }
+  .footer-navi-box {
+    margin: 0 0 2.67% 0;
+    padding: 0 0 0 0;
+  }
+  .footer-navi {
+    display: block;
+    a {
+      display: block;
+      color: #333;
+      font-size: 3.2vw;
+      border-bottom: 1px solid #e5e5e5;
+      padding: 2.67% 5.34%;
+      position: relative;
+      &::after {
+        display: block;
+        content: "";
+        border-left: 1.6vw solid #e1c898;
+        border-top: 1.6vw solid transparent;
+        border-bottom: 1.6vw solid transparent;
+        margin: 2.99% 5.98% 0 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+  }
+  .sekisuihouse-logo {
+    width: 19.2%;
+    margin: 0 auto;
+  }
+  .to-pagetop {
+    width: 10.67%;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10;
+  }
+}

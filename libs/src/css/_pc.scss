@@ -1,0 +1,18 @@
+@import "../__utility/css/modules/module";
+div {
+  p {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1;
+  }
+}
+// 変数のテスト
+$fontColor: #525252;
+
+h1 {
+  font-size: vieww(24/750);
+  color: $fontColor;
+}
+h2{
+  color: #fff;
+}

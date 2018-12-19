@@ -1,0 +1,3 @@
+jQuery(($)=>{
+  console.log("yes");
+});

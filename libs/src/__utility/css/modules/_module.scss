@@ -1,0 +1,66 @@
+// いわずもがなClearFix
+@mixin clearfix(){
+  &:after{
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+// * l-heigh
+// * font-size / line-height
+// * l-heigh(48/32); -> line-height : 1.5;
+@mixin l-height($decimal){
+  line-height :((ceil($decimal * 100)) / 100);
+}
+
+// * width percentage
+// * w-percentage (100/1000); -> width : 10%;
+@mixin w-percentage($decimal){
+  width :ceil(($decimal * 100%) * 100) / 100;
+}
+
+// * font-size vw
+// * font-size / view width
+// * f-vieww (16/640); -> font-size : 2.5vw;
+@mixin f-vieww($decimal){
+  font-size :((ceil($decimal * 10000)) / 100) + vw;
+}
+
+// * animation easing
+@mixin anime-init(){
+  transition :all .45s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+@function easeinout(){
+  @return cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+// * Vertical gradient
+// * only 2 Color
+@mixin V_gradient($color1:#fff, $color2:#000){
+  background-color: $color1;
+  background-image: -webkit-linear-gradient(top, $color1 0%, $color2 100%);
+  background-image:    -moz-linear-gradient(top, $color1 0%, $color2 100%);
+  background-image:         linear-gradient(to bottom, $color1 0%,$color2 100%);
+}
+
+// * Horizontal gradient
+// * only 2 Color
+@mixin H_gradient($color1:#fff, $color2:#000){
+  background-color: $color1;
+  background-image: -webkit-linear-gradient(left, $color1 0%, $color2 100%);
+  background-image:    -moz-linear-gradient(left, $color1 0%, $color2 100%);
+  background-image:         linear-gradient(to right, $color1 0%, $color2 100%);
+}
+
+// * percentage
+// * width : percentage (100/1000); -> 10%
+@function percentage($decimal){
+  @return ceil(($decimal * 100%) * 100) / 100;
+}
+
+// * vieww
+// * width : vieww (100/1000); -> 10vw
+@function vieww($decimal){
+  @return ((ceil($decimal * 10000)) / 100) + vw;
+}

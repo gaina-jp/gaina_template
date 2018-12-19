@@ -1,0 +1,33 @@
+extends ../__template/_layout
+block vars
+  - var _directoryPath = "/about/"
+  - var _pageTitle = "ABOUT"
+  - var _description = "ABOUT"
+  - var _keyword = "ABOUT"
+  - var _ogUrl = _siteUrl + _directoryPath
+  - var _ogImage = _ogUrl + "images/sns.jpg"
+  - var _mainClass = "about"
+
+block style
+  link(rel="stylesheet", href=_directoryPath+"css/style.css")
+
+block _kakunin_
+  //- main
+    //- div -----------------------------------------
+    //- div _directoryPath: ====> 「#{_directoryPath}」
+    //- div _pageTitle: ========> 「#{_pageTitle}」
+    //- div _description: ======> 「#{_description}」
+    //- div _keyword: ==========> 「#{_keyword}」
+    //- div _ogUrl: ============> 「#{_ogUrl}」
+    //- div _ogImage: ==========> 「#{_ogImage}」
+    //- div _mainClass: ========> 「#{_mainClass}」
+    //- div -----------------------------------------
+    //- div 確認したらごっそり消す
+    //- div -----------------------------------------
+
+
+block content
+  p about
+
+block script
+  script(src=_directoryPath+"js/script.js")
