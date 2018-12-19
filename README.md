@@ -11,3 +11,8 @@
 - Pug
 - ES6
 - Scss
+***
+### 注意
+何か`babel-loader`でエラー吐くから下記参照して`node_modules`の中の  
+`node_modules/babel-loader/lib/index.js`に1文追記する  
+https://qiita.com/syunchanp/items/dace515632a9baff344b
